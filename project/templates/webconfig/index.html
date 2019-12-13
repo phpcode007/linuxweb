@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>安装软件</title>
+
+
+    {% include 'index/head.html' %}
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>linux控制面板</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+
+                {% include 'index/menuprofile.html' %}
+
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+
+              {% include 'index/sidebarmenu.html' %}
+
+            </div>
+            <!-- /sidebar menu -->
+
+
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+
+          {% include 'index/topnav.html' %}
+
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+
+            <div class="clearfix"></div>
+
+
+
+
+
+
+
+
+            <div class="row">
+
+{% if '1' in result %}
+<!--  <h1>已经安装nginx</h1>-->
+<button type="button" class="btn btn-primary" id="add_web">添加网站</button>
+
+
+    <div class="table-responsive">
+                      <table class="table table-striped jambo_table bulk_action">
+                        <thead>
+                          <tr class="headings">
+                            <th>
+                              <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" id="check-all" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                            </th>
+                            <th class="column-title">域名</th>
+
+                            <th class="column-title no-link last"><span class="nobr">操作</span>
+                            </th>
+                            <th class="bulk-actions" colspan="7">
+                              <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                            </th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+
+                                      {% for result in nginx_conf_result %}
+
+
+                          <tr class="even pointer">
+                            <td class="a-center ">
+                              <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" class="flat" name="table_records" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                            </td>
+                            <td class="domain_info">{{ result }}</td>
+                            <td class=" last">
+<!--                              <a rel="{{ result }}" href="#" class="update_web">修改</a> | <a rel="{{ result }}" href="#" class="detele_web">删除</a>-->
+                              <a rel="{{ result }}" href="#" class="detele_web">删除</a>
+
+                            </td>
+                          </tr>
+
+                  {% endfor %}
+
+
+
+                        </tbody>
+                      </table>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% else %}
+  <h1>还没有安装nginx,需要先安装nginx</h1>
+<!--  <button type="button" class="btn btn-primary" id="open_web">安装并开启nginx</button>-->
+
+{% endif %}
+
+
+        </div>
+
+
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+
+          {% include 'index/footer.html' %}
+    <script src="/static/js/layer/layer.js"></script>
+
+        </footer>
+
+
+
+
+
+
+        <!-- /footer content -->
+      </div>
+    </div>
+
+
+  <script>
+
+
+
+
+
+
+  //添加网站
+     $("#add_web").click(function(event){
+
+               var nginx_version = $('#nginx_version').val();
+          console.log(nginx_version)
+
+  //弹出一个iframe层
+    layer.open({
+      type: 2,
+      title: 'iframe父子操作',
+      title: 'iframe父子操作',
+      maxmin: true,
+      shadeClose: true, //点击遮罩关闭层
+      area : ['800px' , '520px'],
+      content: '/webconfig/addweb'
+    });
+
+<!--     $.ajax({-->
+<!--        type: 'POST',-->
+<!--       url: "/install_fileandterminal",-->
+<!--        data: JSON.stringify({"php_version":nginx_version}, null, '\t'),-->
+<!--        contentType: 'application/json;charset=UTF-8',-->
+<!--       success: function (data) {-->
+<!--           alert(data);-->
+<!--       },-->
+<!--       error: function (jqXHR, textStatus, errorThrown) {-->
+<!--           alert(jqXHR.statusText);-->
+<!--       }-->
+<!--     });-->
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+  //修改网站
+     $(".update_web").click(function(event){
+
+        var getvalue = $(this).attr('rel');
+        alert(getvalue)
+
+<!--       var r = $(".domain_info").text();-->
+<!--        alert(r);-->
+
+               var nginx_version = $('#nginx_version').val();
+          console.log(nginx_version)
+
+  //弹出一个iframe层
+    layer.open({
+      type: 2,
+      title: 'iframe父子操作',
+      title: 'iframe父子操作',
+      maxmin: true,
+      shadeClose: true, //点击遮罩关闭层
+      area : ['800px' , '520px'],
+      content: '/webconfig/addweb?domain=' + getvalue,
+
+    });
+
+
+
+  });
+
+
+
+
+
+  //删除网站
+     $(".detele_web").click(function(event){
+
+        var delete_nginx_domain = $(this).attr('rel');
+<!--        alert(delete_nginx_domain)-->
+
+
+    //询问框
+    layer.confirm('删除后再也找不回来,您确定删除吗？', {
+      btn: ['确认','取消'] //按钮
+    }, function(){
+
+
+    $.ajax({
+        type: 'POST',
+       url: "/webconfig/delete",
+        data: JSON.stringify({"delete_nginx_domain":delete_nginx_domain}, null, '\t'),
+        contentType: 'application/json;charset=UTF-8',
+       success: function (data) {
+<!--           alert(data);-->
+           //刷新父亲对象（用于框架）
+           parent.location.reload()
+       },
+       error: function (jqXHR, textStatus, errorThrown) {
+           alert(jqXHR.statusText);
+       }
+     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      layer.msg('已经删除', {icon: 1});
+    }, function(){
+<!--      layer.msg('也可以这样', {-->
+<!--        time: 20000, //20s后自动关闭-->
+<!--        btn: ['明白了', '知道了']-->
+<!--      });-->
+    });
+
+
+
+  });
+
+
+
+
+
+
+
+
+  </script>
+
+
+
+
+	
+  </body>
+</html>

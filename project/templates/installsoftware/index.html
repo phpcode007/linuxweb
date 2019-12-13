@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>安装软件</title>
+
+
+    {% include 'index/head.html' %}
+
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>linux控制面板</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+
+                {% include 'index/menuprofile.html' %}
+
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+
+              {% include 'index/sidebarmenu.html' %}
+
+            </div>
+            <!-- /sidebar menu -->
+
+
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+
+          {% include 'index/topnav.html' %}
+
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+
+            <div class="clearfix"></div>
+
+
+
+
+
+
+        <div class="row">
+          <button type="button" class="btn btn-primary" id="systeminit">系统初始化</button>
+        </div>
+
+
+        <div class="row">
+          <button type="button" class="btn btn-primary" id="nginx">安装nginx-1.16.1</button>
+          <!--用户名:<input class="put" type="text" placeholder="请输入您的版本号" id='nginx_version' value=""/>-->
+        </div>
+
+
+            <div class="row">
+
+          <button type="button" class="btn btn-primary" id="php">安装php-7.3.12</button>
+        </div>
+
+
+        <div class="row">
+          <button type="button" class="btn btn-primary" id="redis">安装redis-5.0.7</button>
+        </div>
+
+        <div class="row">
+          <button type="button" class="btn btn-primary" id="mysql">安装mysql-5.7.28</button>(注意:mysql编译时间长)
+        </div>
+
+
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+
+          {% include 'index/footer.html' %}
+
+        </footer>
+
+
+
+
+
+
+        <!-- /footer content -->
+      </div>
+    </div>
+
+
+  <script>
+
+
+<!--    function button_click(button_id,url,data='')-->
+<!--    {-->
+
+
+<!--        //系统初始化-->
+<!--        $(button_id).click(function(event){-->
+
+<!--          var account = $('#account').val();-->
+<!--          console.log(account)-->
+
+<!--          $.ajax({-->
+<!--            url: url,-->
+<!--            data : data,-->
+<!--            success: function (data) {-->
+<!--                alert(data);-->
+<!--            },-->
+<!--            error: function (jqXHR, textStatus, errorThrown) {-->
+<!--                alert(jqXHR.statusText);-->
+<!--            }-->
+<!--          });-->
+
+<!--        });-->
+
+<!--    };-->
+
+
+
+<!--    button_click("#systeminit","/installsoftware/systeminit")-->
+<!--    button_click("#nginx","/installsoftware/nginx",account)-->
+
+
+
+  //系统初始化
+     $("#systeminit").click(function(event){
+
+      var json_data = null;
+
+      $.ajax({
+        type: 'POST',
+        url: "/installsoftware/systeminit",
+        data: JSON.stringify(json_data, null, '\t'),
+        contentType: 'application/json;charset=UTF-8',
+        success: function (data) {
+           alert(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+           alert(jqXHR.statusText);
+        }
+      });
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //安装nginx
+     $("#nginx").click(function(event){
+
+        var json_data = {}
+
+     $.ajax({
+        type: 'POST',
+       url: "/installsoftware/nginx",
+        data: JSON.stringify(json_data, null, '\t'),
+        contentType: 'application/json;charset=UTF-8',
+       success: function (data) {
+           alert(data);
+       },
+       error: function (jqXHR, textStatus, errorThrown) {
+           alert(jqXHR.statusText);
+       }
+     });
+
+  });
+
+
+
+  //安装php
+     $("#php").click(function(event){
+
+               var nginx_version = $('#nginx_version').val();
+          console.log(nginx_version)
+
+     $.ajax({
+        type: 'POST',
+       url: "/installsoftware/php7312",
+        data: JSON.stringify({"php_version":nginx_version}, null, '\t'),
+        contentType: 'application/json;charset=UTF-8',
+       success: function (data) {
+           alert(data);
+       },
+       error: function (jqXHR, textStatus, errorThrown) {
+           alert(jqXHR.statusText);
+       }
+     });
+
+  });
+
+
+
+    //安装redis
+     $("#redis").click(function(event){
+
+               var redis_version = $('#redis_version').val();
+          console.log(redis_version)
+
+     $.ajax({
+        type: 'POST',
+       url: "/installsoftware/redis",
+        data: JSON.stringify({"php_version":redis_version}, null, '\t'),
+        contentType: 'application/json;charset=UTF-8',
+       success: function (data) {
+           alert(data);
+       },
+       error: function (jqXHR, textStatus, errorThrown) {
+           alert(jqXHR.statusText);
+       }
+     });
+
+  });
+
+
+
+
+    //安装mysql
+     $("#mysql").click(function(event){
+
+               var redis_version = $('#redis_version').val();
+          console.log(redis_version)
+
+     $.ajax({
+        type: 'POST',
+       url: "/installsoftware/mysql",
+        data: JSON.stringify({"php_version":redis_version}, null, '\t'),
+        contentType: 'application/json;charset=UTF-8',
+       success: function (data) {
+           alert(data);
+       },
+       error: function (jqXHR, textStatus, errorThrown) {
+           alert(jqXHR.statusText);
+       }
+     });
+
+  });
+
+
+
+
+
+
+  </script>
+
+
+
+
+	
+  </body>
+</html>

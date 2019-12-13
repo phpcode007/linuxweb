@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>安装软件</title>
+
+
+    {% include 'index/head.html' %}
+
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>linux控制面板</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+
+                {% include 'index/menuprofile.html' %}
+
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+
+              {% include 'index/sidebarmenu.html' %}
+
+            </div>
+            <!-- /sidebar menu -->
+
+
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+
+          {% include 'index/topnav.html' %}
+
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+
+            <div class="clearfix"></div>
+
+
+
+
+
+
+
+
+            <div class="row">
+
+                <div class="x_content">
+
+                    <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">软件设置</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">清除缓存</a>
+                      </li>
+<!--                      <li class="nav-item">-->
+<!--                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">安全设置</a>-->
+<!--                      </li>-->
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                      <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+
+
+                          <div class="alert alert-primary" role="alert">
+                            1.网站打不开的时候,如果使用的是云服务器,例如阿里云,腾讯云之类的,优先考虑备案的问题
+                          </div>
+
+                          <div class="alert alert-primary" role="alert">
+                            2.云服务器性能偏慢,在安装软件时会比较慢,需要给点耐心和时间,如果安装不成功,可以清除缓存再安装一次
+                          </div>
+
+                          <div class="alert alert-primary" role="alert">
+                            3.文件上传和web终端要安装才能开启
+                          </div>
+
+
+                          <div class="alert alert-primary" role="alert">
+                            4.长时间不使用web界面的话可以先关闭,防止别人暴力破解
+                          </div>
+
+
+<!--                          <div class="alert alert-primary" role="alert">-->
+<!--                            5.长时间不使用web界面的话可以先清除管理数据库状态，这样会关闭外网访问mysql，更安全-->
+<!--                          </div>-->
+
+                          <div class="alert alert-primary" role="alert">
+                            5.web终端的用户名密码和登录的用户名密码相同,如果机器在内网，可能打不开web终端，因为web终端需要使用外网ip访问
+                          </div>
+
+
+                      </div>
+                      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+
+      <div class="form-check">
+	  <input type="checkbox" class="form-check-input" id="clear_nginx">
+        <label class="form-check-label" for="exampleCheck1">
+          清除nginx安装状态,重新安装</label>
+      </div>
+
+      <div class="form-check">
+	  <input type="checkbox" class="form-check-input" id="clear_php">
+        <label class="form-check-label" for="exampleCheck1">
+          清除php安装状态,重新安装 </label>
+      </div>
+
+
+
+      <div class="form-check">
+	  <input type="checkbox" class="form-check-input" id="clear_redis">
+        <label class="form-check-label" for="exampleCheck1">
+          清除redis安装状态,重新安装 </label>
+      </div>
+
+
+      <div class="form-check">
+	  <input type="checkbox" class="form-check-input" id="clear_mysql">
+        <label class="form-check-label" for="exampleCheck1">
+          清除mysql安装状态,重新安装</label>
+      </div>
+
+
+      <div class="form-check">
+	  <input type="checkbox" class="form-check-input" id="clear_webterminal">
+        <label class="form-check-label" for="exampleCheck1">
+          清除web终端安装状态,重新安装</label>
+      </div>
+
+
+      <div class="form-check">
+	  <input type="checkbox" class="form-check-input" id="clear_phpmysqladmin">
+        <label class="form-check-label" for="exampleCheck1">
+          清除管理数据库软件phpmysqladmin,阻止外网访问</label>
+      </div>
+
+<br />
+<button type="button" class="btn btn-primary" id="clear_submit">提交</button>
+
+                      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+
+
+
+
+                      </div>
+                    </div>
+                </div>
+
+
+        </div>
+
+
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+
+          {% include 'index/footer.html' %}
+
+        </footer>
+
+
+
+
+
+
+        <!-- /footer content -->
+      </div>
+    </div>
+
+
+  <script>
+
+
+function changeFrameHeight(){
+    var ifm= document.getElementById("iframepage");
+    ifm.height=document.documentElement.clientHeight;
+}
+window.onresize=function() {
+    changeFrameHeight();
+}
+
+
+
+  //安装web终端
+     $("#clear_submit").click(function(event){
+
+        var json_data = {};
+
+
+        if($("#clear_nginx").is(':checked'))
+            json_data['nginx'] = '1'
+        else
+            json_data['nginx'] = '0'
+            console.log('没有选中了')
+
+
+         if($("#clear_php").is(':checked'))
+            json_data['php'] = '1'
+         else
+            json_data['php'] = '0'
+            console.log('没有选中了')
+
+         if($("#clear_redis").is(':checked'))
+            json_data['redis'] = '1'
+         else
+            json_data['redis'] = '0'
+            console.log('没有选中了')
+
+         if($("#clear_mysql").is(':checked'))
+            json_data['mysql'] = '1'
+         else
+            json_data['mysql'] = '0'
+            console.log('没有选中了')
+
+         if($("#clear_webterminal").is(':checked'))
+            json_data['webterminal'] = '1'
+         else
+            json_data['webterminal'] = '0'
+            console.log('没有选中了')
+
+
+         if($("#clear_phpmysqladmin").is(':checked'))
+            json_data['phpmysqladmin'] = '1'
+         else
+            json_data['phpmysqladmin'] = '0'
+            console.log('没有选中了')
+
+
+        console.log(json_data)
+
+     $.ajax({
+        type: 'POST',
+       url: "/softwareconfig/clear",
+        data: JSON.stringify(json_data, null, '\t'),
+        contentType: 'application/json;charset=UTF-8',
+       success: function (data) {
+           alert(data);
+       },
+       error: function (jqXHR, textStatus, errorThrown) {
+           alert(jqXHR.statusText);
+       }
+     });
+
+  });
+
+
+
+
+
+  </script>
+
+
+
+
+	
+  </body>
+</html>

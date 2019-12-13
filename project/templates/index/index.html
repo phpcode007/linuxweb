@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>linux web控制面板</title>
+
+
+    {% include 'index/head.html' %}
+
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>linux控制面板</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+
+                {% include 'index/menuprofile.html' %}
+
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+
+              {% include 'index/sidebarmenu.html' %}
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+<!--            <div class="sidebar-footer hidden-small">-->
+<!--              <a data-toggle="tooltip" data-placement="top" title="Settings">-->
+<!--                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>-->
+<!--              </a>-->
+<!--              <a data-toggle="tooltip" data-placement="top" title="FullScreen">-->
+<!--                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>-->
+<!--              </a>-->
+<!--              <a data-toggle="tooltip" data-placement="top" title="Lock">-->
+<!--                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>-->
+<!--              </a>-->
+<!--              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">-->
+<!--                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>-->
+<!--              </a>-->
+<!--            </div>-->
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+
+          {% include 'index/topnav.html' %}
+
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+
+            <div class="clearfix"></div>
+
+
+
+
+
+
+                      <!-- top tiles -->
+          <div class="row tile_count">
+            <div class="col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i>外网ip地址</span>
+              <div class="count display-4">{{ public_ip }}</div>
+            </div>
+            <div class="col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i>内网ip地址</span>
+              <div class="count display-4">{{ ips[0] }}</div>
+            </div>
+            <div class="col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-clock-o"></i>负载状态</span>
+              <div class="count">{{ loads[0] }},{{ loads[1] }},{{ loads[2] }} </div>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i>CPU使用率</span>
+              <div class="count green">{{ cpuuse }}</div>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i>内存使用率</span>
+              <div class="count">{{ menerytotalpercent }}</div>
+            </div>
+
+          </div>
+
+
+
+
+
+
+
+
+                      <div class="row tile_count">
+            <div class="col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i>运行时间</span>
+              <div class="count display-4">{{ updatetime }}</div>
+            </div>
+
+            <div class="col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-clock-o"></i>系统版本</span>
+              <div class="count">{{ systeminfo }} </div>
+            </div>
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+          <!-- /top tiles -->
+
+
+
+        <!--<div class="row">-->
+          <!--系统: {{ systeminfo }} <br />-->
+          <!--运行时间: {{ updatetime }}-->
+        <!--</div>-->
+
+
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+
+          {% include 'index/footer.html' %}
+
+        </footer>
+
+
+
+
+
+
+        <!-- /footer content -->
+      </div>
+    </div>
+
+
+	
+  </body>
+</html>

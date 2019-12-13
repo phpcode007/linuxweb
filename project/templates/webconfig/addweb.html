@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>安装软件</title>
+
+
+    {% include 'index/head.html' %}
+
+
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+
+
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+
+            <div class="clearfix"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+             <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+
+                      <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">域名<span class="required">*</span>
+                        </label>
+                        <div >
+<!--                          <input type="text" id="nginx_domain_text" required="required" class="form-control" data-parsley-id="5"><ul class="parsley-errors-list filled"></ul>-->
+
+                        </div>
+
+<textarea id="nginx_domain"  class="resizable_textarea form-control" placeholder="每一行写一个域名,多域名写多行即可"></textarea>
+
+                      </div>
+
+
+
+
+
+
+                      <div class="ln_solid"></div>
+                      <div class="item form-group">
+                        <div class="col-md-6 col-sm-6 offset-md-3">
+
+                            <button type="submit" class="btn btn-success" id="ajax_submit">提交</button>
+						  <button class="btn btn-primary" type="reset">重置</button>
+
+                        </div>
+                      </div>
+
+                    </form>
+
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+
+          {% include 'index/footer.html' %}
+    <script src="/static/js/layer/layer.js"></script>
+    <script src="/static/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+
+        </footer>
+
+
+
+
+
+
+        <!-- /footer content -->
+      </div>
+    </div>
+
+
+  </body>
+
+      <script>
+
+
+function getcontent(n){
+
+
+console.log("aaaaaaaaaaaaa")
+var arry = text.split("\n");//以换行符为分隔符将内容分割成数组
+<!--alert(arry[n-1]);//弹出第二行文字-->
+alert(arry)
+}
+
+
+ //获取url中的参数
+  function getUrlParam(name) {
+   var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+   var r = window.location.search.substr(1).match(reg); //匹配目标参数
+   if (r != null) return unescape(r[2]); return null; //返回参数值
+  }
+
+
+  var parent_nginx_domain = getUrlParam('domain');
+  $("#nginx_domain").html(parent_nginx_domain)
+
+
+  //安装web终端
+     $("#ajax_submit").click(function(event){
+
+        var nginx_domain = $("#nginx_domain").val();//获取id为nginx_domain的textarea的全部内容
+
+
+<!--          var nginx_domain = $('#nginx_domain_text').val();-->
+          console.log(nginx_domain)
+
+
+          if (nginx_domain.length == 0) {
+            alert('您还没有输入域名')
+            return;
+
+          }
+
+
+          var nginx_path = $('#nginx_path').val();
+          console.log(nginx_path)
+
+         $.ajax({
+           type: 'POST',
+           url: "/webconfig/addweb",
+            data: JSON.stringify({"nginx_domain":nginx_domain,"nginx_path":nginx_path}, null, '\t'),
+            contentType: 'application/json;charset=UTF-8',
+           success: function (data) {
+               alert(data);
+
+             //刷新父亲对象（用于框架）
+             parent.location.reload()
+
+             //关闭当前的iframe,防止出现重复提交
+             parent.layer.closeAll();
+
+
+
+           },
+           error: function (jqXHR, textStatus, errorThrown) {
+               alert(jqXHR.statusText);
+
+               //关闭当前的iframe,防止出现重复提交
+               parent.layer.closeAll();
+           }
+         });
+
+
+
+
+  });
+
+
+
+
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

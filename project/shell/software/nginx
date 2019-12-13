@@ -1,0 +1,84 @@
+#!/bin/sh
+#
+# nginx - this script starts and stops the nginx daemon
+#
+# chkconfig:   - 85 15
+# description:  NGINX is an HTTP(S) server, HTTP(S) reverse \
+#               proxy and IMAP/POP3 proxy server
+# processname: nginx
+# config:      /etc/nginx/nginx.conf
+# config:      /etc/sysconfig/nginx
+# pidfile:     /var/run/nginx.pid
+
+# Source function library.
+
+# Source networking configuration.
+
+# Check that networking is up.
+
+nginx=nginx_path
+prog=$(basename $nginx)
+
+
+
+
+start() {
+    [ -x $nginx ] || exit 5
+    echo -n $"Starting $prog: "
+    $nginx && echo 'ok'
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    $nginx -s stop && echo 'ok'
+}
+
+restart() {
+    configtest || return $?
+    stop
+    sleep 1
+    start
+}
+
+reload() {
+    configtest || return $?
+    echo -n $"Reloading $prog: "
+    $nginx -s reload && echo 'ok'
+}
+
+force_reload() {
+    restart
+}
+
+configtest() {
+  $nginx -t
+}
+
+rh_status() {
+    status $prog
+}
+
+rh_status_q() {
+    rh_status >/dev/null 2>&1
+}
+
+case "$1" in
+    start)
+        #rh_status_q && exit 0
+        $1
+        ;;
+    stop)
+        #rh_status_q || exit 0
+        $1
+        ;;
+    restart|configtest)
+        $1
+        ;;
+    reload)
+        #rh_status_q || exit 7
+        $1
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|restart|reload|configtest}"
+        exit 2
+esac
