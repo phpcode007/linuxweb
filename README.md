@@ -18,6 +18,8 @@ linux web控制面板
 
 2.python runserver.py
 
+登录的账号和密码在/var/log/flaskuserpwd.txt 这个文件中
+
 <br>
 <br>
 <br>
