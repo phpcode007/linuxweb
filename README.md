@@ -23,4 +23,14 @@ linux web控制面板
 <br>
 <br>
 
-如果你不想运行web终端,只是想安装高性能php环境,直接执行 cd project/shell/auto &&　sh autoinstall.sh
+如果你不想运行web界面,只是想安装高性能php环境,直接执行 cd project/shell/auto &&　sh autoinstall.sh
+
+<br>
+<br>
+<br>
+<br>
+
+![image](https://github.com/phpcode007/allphpcode/blob/master/public/img/web1.png)
+![image](https://github.com/phpcode007/allphpcode/blob/master/public/img/web2.png)
+![image](https://github.com/phpcode007/allphpcode/blob/master/public/img/web3.png)
+![image](https://github.com/phpcode007/allphpcode/blob/master/public/img/web4.png)
