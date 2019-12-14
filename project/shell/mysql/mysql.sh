@@ -39,7 +39,13 @@ function installmysql()
     \cp -rf support-files/mysql.server /etc/init.d/mysqld
     chmod 755 /etc/init.d/mysqld
 
+
+
     \cp -rf $1/my.cnf /etc/my.cnf
+    free_info=$(free -m | grep Mem | awk '{print $2}')
+    memory_info=$(echo $free_info | awk '{printf("%.0f\n", $1*0.1)}')
+
+    sed -i "s#free_info#$memory_info#g" /etc/my.cnf
     sed -i "s#mysqlbasedir#$2/mysql#g" /etc/my.cnf
 
     cd $2/mysql
